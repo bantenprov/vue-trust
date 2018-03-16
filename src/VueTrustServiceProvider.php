@@ -135,7 +135,7 @@ class VueTrustServiceProvider extends ServiceProvider
         $packageAssetsPath = __DIR__.'/resources/assets';
 
         $this->publishes([
-            $packageAssetsPath => recource_path('assets'),
+            $packageAssetsPath => resource_path('assets'),
         ], 'vue-trust-assets');
     }
 
