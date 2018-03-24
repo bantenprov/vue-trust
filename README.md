@@ -172,3 +172,6 @@ import vuetrust_menu from './components/bantenprov/vue-trust/vuetrust_menu';
 ```bash
 $ npm run dev
 ```
+
+## lanjutkan install laratrust
+instalasi dan pengaturan laratust dapat dilihan <a href="http://laratrust.readthedocs.io/">disini</a>
