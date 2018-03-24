@@ -39,6 +39,8 @@ class VueTrustController extends Controller
     //[Function] roleIndex
     public function roleIndex(Request $request){        
 
+        $response = array();
+
         if (request()->has('sort')) {
             list($sortCol, $sortDir) = explode('|', request()->sort);
 
@@ -64,6 +66,9 @@ class VueTrustController extends Controller
     //[Function] roleStore
     public function roleStore(Request $request){
         
+        $response = array();
+        $save = array();
+
         $validator = Validator::make($request->all(), [
             'name'          => 'required',
             'display_name'  => 'required',
@@ -89,7 +94,8 @@ class VueTrustController extends Controller
 
     //[Function] roleShow
     public function roleShow($id, Request $request){
-        
+        $response = array();
+
         $role = $this->role->findOrFail($id);
 
         $response['status'] = true;
@@ -100,7 +106,8 @@ class VueTrustController extends Controller
 
     //[Function] roleEdit
     public function roleEdit($id, Request $request){
-        
+        $response = array();
+
         $role = $this->role->findOrFail($id);
 
         $response['status'] = true;
@@ -111,7 +118,8 @@ class VueTrustController extends Controller
 
     //[Function] roleUpdate
     public function roleUpdate($id, Request $request){
-        
+        $response = array();
+        $save = array();
         $validator = Validator::make($request->all(), [
             'name'          => 'required',
             'display_name'  => 'required',
@@ -139,7 +147,8 @@ class VueTrustController extends Controller
     
     //[Function] roleDestroy
     public function roleDestroy($id, Request $request){
-        
+        $response = array();
+
         $role = $this->role->findOrFail($id);
 
         $response['message']    = "success delete role [" . $role->name . "]";
@@ -152,6 +161,8 @@ class VueTrustController extends Controller
 
     //[Function] permissionIndex
     public function permissionIndex(Request $request){
+        $response = array();
+
         if (request()->has('sort')) {
             list($sortCol, $sortDir) = explode('|', request()->sort);
 
@@ -176,7 +187,9 @@ class VueTrustController extends Controller
 
     //[Function] permissionStore
     public function permissionStore(Request $request){
-        
+        $response = array();
+        $save = array();
+
         $validator = Validator::make($request->all(), [
             'name'          => 'required',
             'display_name'  => 'required',
@@ -202,7 +215,8 @@ class VueTrustController extends Controller
 
     //[Function] permissionShow
     public function permissionShow($id, Request $request){
-        
+        $response = array();
+
         $role = $this->permission->findOrFail($id);
 
         $response['status']       = true;
@@ -213,7 +227,8 @@ class VueTrustController extends Controller
 
     //[Function] permissionEdit
     public function permissionEdit($id, Request $request){
-        
+        $response = array();
+
         $role = $this->permission->findOrFail($id);
 
         $response['status'] = true;
@@ -224,7 +239,8 @@ class VueTrustController extends Controller
 
     //[Function] setPermission
     public function setPermission($id, Request $request){
-        
+        $response = array();
+
         $role = $this->role->findOrFail($id);
         $current_permissions = $role->permissions()->get();
         $permissions = $this->permission->all();
@@ -235,8 +251,7 @@ class VueTrustController extends Controller
 
             foreach($current_permissions as $current_permision){
                 if($permission->id == $current_permision->id){
-                    //
-                    //echo $current_permision->id;
+                    
                     if($permission->id == $current_permision->id){
                         array_set($permission, 'disable', true);
                     }
@@ -258,7 +273,8 @@ class VueTrustController extends Controller
 
     //[Function] setPermissionStore
     public function setPermissionStore($id, Request $request){
-        
+        $response = array();
+
         $validator = Validator::make($request->all(), [
             'permission_id'          => 'required',
         ]);
@@ -272,7 +288,6 @@ class VueTrustController extends Controller
 
             $current_permissions = $this->role->findOrFail($id)->permissions()->get();   
             $save = $this->removeSamePermission($request->permission_id, $current_permissions);
-            //dd($current_permissions);
             $this->role->findOrFail($id)->attachPermissions($save);
         }
         
@@ -281,7 +296,8 @@ class VueTrustController extends Controller
 
     //[Function] removePermissionFromRole
     public function removePermissionFromRole($id, Request $request){
-        
+        $response = array();
+
         $validator = Validator::make($request->all(), [
             'permission_id'          => 'required',
         ]);

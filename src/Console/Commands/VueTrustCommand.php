@@ -42,8 +42,6 @@ class VueTrustCommand extends Command
      */
     public function handle()
     {
-        //$name = $this->anticipate('What is your name?', ['Taylor', 'Dayle']);
-        // $name = $this->choice('What is your name?', ['Taylor', 'Dayle'], 0);
-        // $this->info($name);
+        $this->info('Vue trust package demo');
     }
 }
