@@ -174,4 +174,4 @@ $ npm run dev
 ```
 
 ## lanjutkan install laratrust
-instalasi dan pengaturan laratust dapat dilihan <a href="http://laratrust.readthedocs.io/">disini</a>
+instalasi dan pengaturan laratust dapat dilihat <a href="http://laratrust.readthedocs.io/">disini</a>
