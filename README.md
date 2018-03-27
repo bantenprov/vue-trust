@@ -175,3 +175,35 @@ $ npm run dev
 
 ## lanjutkan install laratrust
 instalasi dan pengaturan laratust dapat dilihat <a href="http://laratrust.readthedocs.io/">disini</a>
+
+## setelah install dan kofigurasi `laratrust` lanjutkan :
+
+### Edit app/Role.php & app/Permission.php
+
+```php
+<?php
+
+namespace App;
+
+use Laratrust\Models\LaratrustRole;
+
+class Role extends LaratrustRole
+{
+    public $fillable = ['name', 'display_name', 'description'];
+}
+
+```
+
+```php
+<?php
+
+namespace App;
+
+use Laratrust\Models\LaratrustPermission;
+
+class Permission extends LaratrustPermission
+{
+    public $fillable = ['name', 'display_name', 'description'];
+}
+
+```
