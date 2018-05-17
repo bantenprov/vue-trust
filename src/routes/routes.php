@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'vue-trust', 'middleware' => ['web']], function() {
+Route::group(['prefix' => 'vue-trust', 'middleware' => ['web','role:superadministrator']], function() {
     Route::get('demo', 'Bantenprov\VueTrust\Http\Controllers\VueTrustController@demo');
 
     Route::get('/role', 'Bantenprov\VueTrust\Http\Controllers\VueTrustController@roleIndex')->name('vue-trust.roleIndex');
@@ -23,10 +23,10 @@ Route::group(['prefix' => 'vue-trust', 'middleware' => ['web']], function() {
 
     Route::get('/permission/{id}/edit', 'Bantenprov\VueTrust\Http\Controllers\VueTrustController@permissionEdit')->name('vue-trust.permissionEdit');
 
-    Route::get('/role/{id}/set-permission', 'Bantenprov\VueTrust\Http\Controllers\VueTrustController@setPermission')->name('vue-trust.setPermission'); 
+    Route::get('/role/{id}/set-permission', 'Bantenprov\VueTrust\Http\Controllers\VueTrustController@setPermission')->name('vue-trust.setPermission');
 
-    Route::post('/role/{id}/set-permission-store', 'Bantenprov\VueTrust\Http\Controllers\VueTrustController@setPermissionStore')->name('vue-trust.setPermissionStore'); 
-    
-    Route::post('/role/{id}/remove-permission-from-role', 'Bantenprov\VueTrust\Http\Controllers\VueTrustController@removePermissionFromRole')->name('vue-trust.removePermissionFromRole'); 
+    Route::post('/role/{id}/set-permission-store', 'Bantenprov\VueTrust\Http\Controllers\VueTrustController@setPermissionStore')->name('vue-trust.setPermissionStore');
+
+    Route::post('/role/{id}/remove-permission-from-role', 'Bantenprov\VueTrust\Http\Controllers\VueTrustController@removePermissionFromRole')->name('vue-trust.removePermissionFromRole');
 
 });
